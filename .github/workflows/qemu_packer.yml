@@ -21,4 +21,5 @@ jobs:
     
     - name: build QEMU image
       run: |
+        packer init
         packer build qemu-image.pkr.hcl
