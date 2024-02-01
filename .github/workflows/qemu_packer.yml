@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      PACKER_LOG: "1"
 
     steps:
     - name: checkout code
