@@ -1,0 +1,34 @@
+#cloud-config
+autoinstall:
+  version: 1
+  locale: de_DE
+  keyboard:
+    layout: us
+  ssh:
+    install-server: true
+    allow-pw: true
+  user-data:
+    preserve_hostname: false
+    package_update: true
+    packages:
+    - docker.io
+    - acl
+    - curl
+    hostname: packerubuntu
+    package_upgrade: true
+    timezone: Europe/Berlin
+    chpasswd:
+      expire: true
+      list:
+        - user1:packerubuntu
+    users:
+    - name: admin
+      passwd: $6$xyz$74AlwKA3Z5n2L6ujMzm/zQXHCluA4SRc2mBfO2/O5uUc2yM2n2tnbBMi/IVRLJuKwfjrLZjAT7agVfiK7arSy/
+      groups: [adm, cdrom, dip, plugdev, lxd, sudo]
+      lock-passwd: false
+      sudo: ALL=(ALL) NOPASSWD:ALL
+      shell: /bin/bash
+    - name: user1
+      plain_text_passwd: packerubuntu
+      lock-passwd: false
+      shell: /bin/bash
