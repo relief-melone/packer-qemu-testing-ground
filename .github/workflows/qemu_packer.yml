@@ -29,7 +29,7 @@ jobs:
         packer build qemu-image.pkr.hcl
 
     - name: upload artifact
-      uses: actions/upload/artifact@v2
+      uses: actions/upload-artifact@v2
       with:
         name: qemu-image
         path: output
