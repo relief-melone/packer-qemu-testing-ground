@@ -23,7 +23,9 @@ variable "vm_template_name" {
 }
 
 locals {
-    vm_name = "${var.vm_template_name}-${var.ubuntu_version}"
+    image_version = "0.1.0"
+
+    vm_name = "${var.vm_template_name}-${var.ubuntu_version}-${local.image_version}"
     output_dir = "output/${local.vm_name}"
 }
 
@@ -53,6 +55,7 @@ source "qemu" "my_image" {
     accelerator      = "kvm" # use none here if not using KVM
     disk_size        = "30G"
     disk_compression = true
+    format           = "qcow2"
 
     # Final Image will be available in `output/packerubuntu-*/`
     output_directory = "${local.output_dir}"
