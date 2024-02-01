@@ -1,4 +1,12 @@
-## Variable will be set via the Command line defined under the `vars` directory
+packer {
+  required_plugins {
+    qemu = {
+      version = ">= 1.0.10"
+      source  = "github.com/hashicorp/qemu"
+    }
+  }
+}
+
 variable "ubuntu_version" {
     type = string
     default = "22.04.3"
