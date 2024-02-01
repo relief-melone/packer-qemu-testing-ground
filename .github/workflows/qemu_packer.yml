@@ -18,7 +18,7 @@ jobs:
     - name: Install qemu
       run: |
         sudo apt-get update && sudo apt-get install qemu-system -y
-        sudo usermod -a -G kvm $USER
+        sudo chmod 666 /dev/kvm
     
     - name: Setup packer
       uses: hashicorp/setup-packer@main
