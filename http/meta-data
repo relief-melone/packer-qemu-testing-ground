@@ -1,0 +1,3 @@
+instance-id: packer-worker.tenant-local
+local-hostname: my-fucking-machine
+

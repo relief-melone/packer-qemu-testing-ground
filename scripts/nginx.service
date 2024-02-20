@@ -1,0 +1,11 @@
+[Unit]
+Description="Test for docker container as service"
+After=network.target
+Requires=network.target
+
+[Service]
+ExecStartPre=-/usr/bin/nginx_stop.sh
+ExecStart=/usr/bin/nginx_start.sh
+
+[Install]
+WantedBy=multi-user.target
