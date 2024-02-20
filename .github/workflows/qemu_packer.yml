@@ -1,9 +1,7 @@
 name: Create and Push QEMU image
 
 on:
-  push:
-    branches: 
-    - **
+  push: {}
 
 jobs:
   build:
