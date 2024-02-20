@@ -81,6 +81,7 @@ source "qemu" "my_image" {
 #    ["-smp", "8"], 
 #    ["-vga", "virtio"],
 #    ["-cdrom", "seed.img"], 
+    ["-display", "none"],
     ["-serial", "mon:stdio"], 
 #    ["-smbios", "type=1,serial=ds=nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/"]
   ]
