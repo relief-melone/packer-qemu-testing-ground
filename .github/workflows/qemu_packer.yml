@@ -1,5 +1,9 @@
 name: Create and Push QEMU image
 
+on:
+  push:
+    branch: **
+
 jobs:
   build:
     runs-on: ubuntu-latest
