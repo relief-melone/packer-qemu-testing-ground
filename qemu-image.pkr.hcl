@@ -12,36 +12,36 @@ variable "ubuntu_version" {
   default = "22.04.3"
 }
 
-variable "ubuntu_iso_file" { 
-  type    = string 
-  default = "ubuntu-22.04.3-live-server-amd64.iso" 
-} 
+variable "ubuntu_iso_file" {
+  type    = string
+  default = "ubuntu-22.04.3-live-server-amd64.iso"
+}
 
-variable "vm_template_name" { 
-  type    = string 
-  default = "ubuntu" 
-} 
+variable "vm_template_name" {
+  type    = string
+  default = "ubuntu"
+}
 
-variable "source_headless" { 
-  type    = bool 
-  default = false 
-} 
+variable "source_headless" {
+  type    = bool
+  default = false
+}
 
-variable "source_accelerator" { 
-  type    = string 
-  default = "kvm" 
-} 
+variable "source_accelerator" {
+  type    = string
+  default = "kvm"
+}
 
-locals { 
-  image_version = "0.1.0" 
-  vm_name    = "${var.vm_template_name}-${var.ubuntu_version}-${local.image_version}" 
-  output_dir = "output/${local.vm_name}" 
-} 
+locals {
+  image_version = "0.1.0"
+  vm_name    = "${var.vm_template_name}-${var.ubuntu_version}-${local.image_version}"
+  output_dir = "output/${local.vm_name}"
+}
 
-source "qemu" "my_image" { 
-  vm_name = "${local.vm_name}.qcow2" 
-  iso_url      = "https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img" 
-  iso_checksum = "file:https://cloud-images.ubuntu.com/jammy/current/SHA256SUMS" # Location of Cloud-Init / Autoinstall Configuration files Will be served via an HTTP Server from Packer http_directory = "http" #  
+source "qemu" "my_image" {
+  vm_name = "${local.vm_name}.qcow2"
+  iso_url      = "https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img"
+  iso_checksum = "file:https://cloud-images.ubuntu.com/jammy/current/SHA256SUMS" # Location of Cloud-Init / Autoinstall Configuration files Will be served via an HTTP Server from Packer http_directory = "http" #
 
 #  boot_command = [ "<spacebar><wait><spacebar><wait><spacebar><wait><spacebar><wait><spacebar><wait>", "e<wait>",
 #    "<down><down><down><end>",
@@ -77,12 +77,12 @@ source "qemu" "my_image" {
   headless         = var.source_headless # NOTE: set this to true when using in CI Pipelines
   qemuargs         = [
 #    ["-drive", "file=/tmp/temp/jammy-server-cloudimg-amd64.img,if=virtio,format=qcow2" ]
-#    ["-m", "12G"], 
-#    ["-smp", "8"], 
+#    ["-m", "12G"],
+#    ["-smp", "8"],
 #    ["-vga", "virtio"],
-#    ["-cdrom", "seed.img"], 
+#    ["-cdrom", "seed.img"],
 #    ["-display", "none"],
-#    ["-serial", "mon:stdio"], 
+#    ["-serial", "mon:stdio"],
 #    ["-smbios", "type=1,serial=ds=nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/"]
   ]
 }

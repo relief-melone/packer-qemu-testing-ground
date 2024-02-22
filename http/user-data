@@ -1,5 +1,5 @@
 #cloud-config
-ssh_pwauth: True
+ssh_pwauth: true
 locale: de_DE
 keyboard:
   layout: de
