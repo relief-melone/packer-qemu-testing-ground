@@ -28,7 +28,7 @@ jobs:
         packer init qemu-image.pkr.hcl
         packer build\
           --var source_headless=true \
-          --var accelerator=kvm \
+          --var source_accelerator=kvm \
           qemu-image.pkr.hcl
         
 
